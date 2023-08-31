@@ -27,7 +27,7 @@ urlpatterns = [
     path('create_account/',views.create_account),
     # path('',views.admin),
     # path('',views.user),
-    # path('',views.trainers),
+    path('trainers/',views.trainers),
     path('about/',views.about),
 ]
 

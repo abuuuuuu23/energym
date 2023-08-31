@@ -2,7 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    # return render(request,'index.html')
+    return render(request,'admin.html')
+    return render(request,'user.html')
     # return render(request,'trainers.html')
 def login(request):
     return render(request,'login.html')
@@ -12,3 +14,6 @@ def create_account(request):
 
 def about(request):
     return render(request,'about.html')
+
+def trainers(request):
+    return render(request,'trainers.html')
