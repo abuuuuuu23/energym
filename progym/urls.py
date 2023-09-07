@@ -25,10 +25,12 @@ urlpatterns = [
     path('',views.index),
     path('login/',views.login),
     path('create_account/',views.create_account),
-    # path('',views.admin),
-    # path('',views.user),
+    # path('admin/',views.admin),
+    # path('user/',views.user),
     path('trainers/',views.trainers),
     path('about/',views.about),
+    path('service/',views.service),
+    path('contact/',views.contact),
 ]
 
 
