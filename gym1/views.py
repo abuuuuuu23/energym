@@ -4,8 +4,8 @@ from gym1.models import user_account,user_details,trainer_account,trainer_detail
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
 def index(request):
-    # return render(request,'admin.html')
-    return render(request,'index.html')
+    return render(request,'admin.html')
+    # return render(request,'index.html')
 
 # def admin(request):
 #     return render(request,'admin.html')
@@ -63,3 +63,37 @@ def create_account2(request):
     c.save()
     return render(request,'create_account.html')
 
+def create_trainer2(request):
+    a=User()
+    b=trainer_account()
+    c=trainer_details()
+    a.username=request.POST.get('username')
+    a.email=request.POST.get('email')
+    a.first_name=request.POST.get('firstname')
+    password=request.POST.get('password')
+    a.set_password(password)
+    b.username=request.POST.get('username')
+    b.firstname=request.POST.get('firstname')
+    b.email=request.POST.get('email')
+    b.phone=request.POST.get('phone')
+    b.account_type='trainer'
+    c.firstname=request.POST.get('firstname')
+    c.lastname=request.POST.get('lastname')
+    c.gender=request.POST.get('gender')
+    c.email=request.POST.get('email')
+    c.phone=request.POST.get('phone')
+    c.address=request.POST.get('address')
+    c.district=request.POST.get('district')
+    c.username=request.POST.get('username')
+    photo=request.FILES['photo']
+    fs= FileSystemStorage()
+    filename=fs.save(photo.name,photo) 
+    uploaded_file_url=fs.url(filename)
+    c.photo=uploaded_file_url
+    c.age=request.POST.get('age')
+    c.experience=request.POST.get('experience')
+    c.category=request.POST.get('catagory')
+    a.save()
+    b.save()
+    c.save()
+    return render(request,"trainers.html")

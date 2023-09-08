@@ -32,6 +32,7 @@ urlpatterns = [
     path('service/',views.service),
     path('contact/',views.contact),
     path('create_account2/',views.create_account2),
+    path('create_trainer2/',views.create_trainer2),
 ]
 
 
