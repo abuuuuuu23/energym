@@ -62,3 +62,4 @@ def create_account2(request):
     b.save()
     c.save()
     return render(request,'create_account.html')
+
