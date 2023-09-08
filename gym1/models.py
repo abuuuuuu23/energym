@@ -19,7 +19,8 @@ class user_details(models.Model):
     email=models.CharField(max_length=30)
     phone=models.IntegerField()
     address=models.CharField(max_length=50)
-    photo=models.CharField(max_length=30)
+    district=models.CharField(max_length=30)
+    photo=models.CharField(max_length=300)
     class meta:
         db_table="user_details"
 

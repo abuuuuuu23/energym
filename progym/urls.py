@@ -31,6 +31,7 @@ urlpatterns = [
     path('about/',views.about),
     path('service/',views.service),
     path('contact/',views.contact),
+    path('create_account2/',views.create_account2),
 ]
 
 

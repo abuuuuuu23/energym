@@ -120,32 +120,33 @@
                 <div class="row">
                   <div class="col-4">
                     <div class="detail-box">
-                      <form>
+                      <form enctype="multipart/form-data" action="/create_account2/"  method="post">
+                        {% csrf_token %}
                        <div class="form-group">
-                        <input type="text" class="form-control" placeholder="enter first name">
+                        <input type="text" name="username" class="form-control" placeholder="enter first name">
                        </div>
                        <div class="form-group">
-                        <input type="text" class="form-control" placeholder="enter last name">
+                        <input type="text" name="lastname" class="form-control" placeholder="enter last name">
                        </div>
                        <div class="form-group">
-                        <input type="text" class="form-control" placeholder="enter username">
+                        <input type="text" name="username" class="form-control" placeholder="enter username">
                        </div>
                        <div class="form-group">
-                        <input type="text" class="form-control" placeholder="enter gmail">
+                        <input type="text" name="gmail" class="form-control" placeholder="enter gmail">
                        </div>
                        <div class="form-group">
-                        <input type="text" class="form-control" placeholder="enter district">
+                        <input type="text" name="district" class="form-control" placeholder="enter district">
                        </div>
-                       <div>
+                       <!-- <div>
                         <select name="account_type">
                         <option>account type</option>
                         <option>user</option>
                         <option>trainer</option>
                         </select>
 
-                       </div>
+                       </div> -->
                        <div class="form-group">
-                        <input type="file" name="image">
+                        <input type="file" name="photo">
                        </div>
                        
                         <label style="color: rgb(255, 255, 255);">gender</label>
@@ -153,13 +154,13 @@
                         <input type="radio" name="gender" value="female" style="margin-left: 20px; color: white;">female
                        
                        
-                        <input type="number" class="form-control" placeholder="enter Phone number"><br>
+                        <input type="number" name="phone" class="form-control" placeholder="enter Phone number"><br>
                        
                        <div>
                         <textarea name="address" class="form-control" cols="15" rows="3">address</textarea>
                        </div><br>
                        <div class="form-group">
-                        <input type="password" class="form-control" placeholder="enter password">
+                        <input type="password"  class="form-control" placeholder="enter password">
                        </div>
                        <div class="btn-box">
                        <input type="submit" class=" btn-1" value=" Create account  ">
