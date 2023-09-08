@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'progym.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME':'project gym',
-        # 'USER':'root',
-        # 'PASSWD':'',
-        # 'HOST':'localhost',
-        # 'PORT':'',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'project gym',
+        'USER':'root',
+        'PASSWD':'',
+        'HOST':'localhost',
+        'PORT':'',
     }
 }
 

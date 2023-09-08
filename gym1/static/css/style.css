@@ -224,7 +224,7 @@ a:focus {
 }
 .slider_section_admin {
   height: calc(100% - 80px);
-  background-image: url(../images/admin.jpg);
+  background-image: url(../images/admin1.jpg);
   background-size: cover;
 }
 .slider_section_trainer {
@@ -931,6 +931,5 @@ a:focus {
 .footer_section a {
   color: #ffffff;
 }
-
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
