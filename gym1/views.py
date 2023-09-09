@@ -1,21 +1,50 @@
-from django.shortcuts import render
+from tkinter import Message
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+import requests
 from gym1.models import user_account,user_details,trainer_details
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth import authenticate
 # Create your views here.
 def index(request):
-    return render(request,'admin.html')
-    # return render(request,'index.html')
+    # return render(request,'admin.html')
+    return render(request,'index.html')
 
-# def admin(request):
-#     return render(request,'admin.html')
-
-# def user(request):
-#     return render(request,'user.html')
+# -----------login section---------------
 
 def login(request):
     return render(request,'login.html')
+def login1(request):
+    username=request.POST.get('uname')
+    password=request.POST.get('pwd')
+    user = authenticate(username=username, password=password)
+    print(user,"tset1")
+    request.session['username']=username
+    x = user_account.objects.filter(account_type='user')
+    if user is not None and user.is_superuser == 1:
+        return redirect('/admin1')
+    elif x is not None and user.is_superuser == 0 :
+        x = user_account.objects.get(username=user)
+        if x.account_type=="user":
+            return redirect('/userHome')
+        elif x.account_type=="trainer":
+            return redirect('/trainerHome')
+        else:
+            pass
+    else:
+        return HttpResponse('Invalid response')
+    
+def adminHome(request):
+    return render(request,'admin.html')
 
+def userHome(request):
+    a=request.session['username']
+    return render(request,'user.html',{'x':a})
+def trainerHome(request):
+    a=request.session['username']
+    return render(request,'trainerHome.html',{'x':a})
+    # -----------Login section ended-----------
 def create_account(request):
     return render(request,'create_account.html')
 

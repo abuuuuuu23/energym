@@ -23,10 +23,14 @@ from gym1 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
+
     path('login/',views.login),
+    path('login1/',views.login1),
+    path('trainerHome/',views.trainerHome),
+    path('userHome/',views.userHome),
+    path('adminHome/',views.adminHome),
+
     path('create_account/',views.create_account),
-    # path('admin/',views.admin),
-    # path('user/',views.user),
     path('trainers/',views.trainers),
     path('about/',views.about),
     path('service/',views.service),
