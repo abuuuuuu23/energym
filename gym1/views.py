@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from gym1.models import user_account,user_details,trainer_account,trainer_details
+from gym1.models import user_account,user_details,trainer_details
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
 def index(request):
@@ -23,7 +23,7 @@ def about(request):
     return render(request,'about.html')
 
 def trainers(request):
-    return render(request,'trainers.html')
+    return render(request,'trainerForm.html')
 
 def service(request):
     return render(request,'service.html')
@@ -65,7 +65,7 @@ def create_account2(request):
 
 def create_trainer2(request):
     a=User()
-    b=trainer_account()
+    b=user_account()
     c=trainer_details()
     a.username=request.POST.get('username')
     a.email=request.POST.get('email')
@@ -92,7 +92,7 @@ def create_trainer2(request):
     c.photo=uploaded_file_url
     c.age=request.POST.get('age')
     c.experience=request.POST.get('experience')
-    c.category=request.POST.get('catagory')
+    c.category=request.POST.get('category')
     a.save()
     b.save()
     c.save()
