@@ -21,10 +21,9 @@ def login1(request):
     user = authenticate(username=username, password=password)
     print(user,"tset1")
     request.session['username']=username
-    x = user_account.objects.filter(account_type='user')
     if user is not None and user.is_superuser == 1:
-        return redirect('/admin1')
-    elif x is not None and user.is_superuser == 0 :
+        return redirect('/adminHome')
+    elif user is not None and user.is_superuser == 0 :
         x = user_account.objects.get(username=user)
         if x.account_type=="user":
             return redirect('/userHome')
@@ -125,4 +124,4 @@ def create_trainer2(request):
     a.save()
     b.save()
     c.save()
-    return render(request,"trainers.html")
+    return redirect('/adminHome/')
