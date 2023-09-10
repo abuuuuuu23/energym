@@ -2,7 +2,7 @@ from tkinter import Message
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-import requests
+# import requests
 from gym1.models import user_account,user_details,trainer_details
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import authenticate
@@ -23,7 +23,7 @@ def login1(request):
     request.session['username']=username
     if user is not None and user.is_superuser == 1:
         return redirect('/adminHome')
-    elif user is not None and user.is_superuser == 0 :
+    elif user is not None and user.is_superuser == 0:
         x = user_account.objects.get(username=user)
         if x.account_type=="user":
             return redirect('/userHome')
@@ -125,3 +125,9 @@ def create_trainer2(request):
     b.save()
     c.save()
     return redirect('/adminHome/')
+
+def trainerForm(request):
+    return redirect('admin.html')
+
+def add_trainer(request):
+    return render('trainerForm.html')

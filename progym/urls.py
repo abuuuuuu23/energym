@@ -30,6 +30,7 @@ urlpatterns = [
     path('userHome/',views.userHome),
     path('adminHome/',views.adminHome),
 
+    path('trainerForm',views.trainerForm),
     path('create_account/',views.create_account),
     path('trainers/',views.trainers),
     path('about/',views.about),
@@ -37,6 +38,7 @@ urlpatterns = [
     path('contact/',views.contact),
     path('create_account2/',views.create_account2),
     path('create_trainer2/',views.create_trainer2),
+    path('add_trainer/',views.add_trainer)
 ]
 
 
