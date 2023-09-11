@@ -18,6 +18,7 @@ def login(request):
 def login1(request):
     username=request.POST.get('uname')
     password=request.POST.get('pwd')
+    print(username,"test111",password)
     user = authenticate(username=username, password=password)
     print(user,"tset1")
     request.session['username']=username
@@ -67,6 +68,7 @@ def create_account2(request):
     a.email=request.POST.get('email')
     a.first_name=request.POST.get('firstname')
     password=request.POST.get('password')
+    print(password,"test3")
     a.set_password(password)
     b.username=request.POST.get('username')
     b.firstname=request.POST.get('firstname')
