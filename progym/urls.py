@@ -38,7 +38,8 @@ urlpatterns = [
     path('contact/',views.contact),
     path('create_account2/',views.create_account2),
     path('create_trainer2/',views.create_trainer2),
-    path('add_trainer/',views.add_trainer)
+    path('update_trainer/',views.update_trainer),
+    path('update_trainer2/<int:id>',views.update_trainer2),
 ]
 
 
