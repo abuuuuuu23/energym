@@ -133,8 +133,8 @@ def trainerForm(request):
 
 def update_trainer(request):
     a=request.session['username']
-    # b=trainer_details.objects.get(username=a)
-    return render(request,'update_trainer.html',{'x':a})
+    b=trainer_details.objects.get()
+    return render(request,'update_trainer.html',{'':a})
 
 
 def update_trainer2(request):
