@@ -128,48 +128,47 @@ def create_trainer2(request):
     c.save()
     return redirect('/adminHome/')
 
-def trainerForm(request):
-    return redirect('admin.html')
+def view_trainer(request):
+    a=trainer_details.objects.all()
+    return render(request,'view_trainer.html',{'data':a})
 
-def update_trainer(request):
-    a=request.session['username']
-    b=trainer_details.objects.get()
-    return render(request,'update_trainer.html',{'':a})
+# def update_trainer(request):
+#     # a=request.session['username']
+#     # b=trainer_details.objects.get(username=a)
+#     return render(request,'update_trainer.html')
 
 
-def update_trainer2(request):
-    a=User()
-    b1=request.session['username']
-    b=user_account.objects.get(username=b1)
-    c1=request.session['username']
-    c=trainer_details.objects.get(username=c1)
-    a.username=request.POST.get('username')
-    a.email=request.POST.get('email')
-    a.first_name=request.POST.get('firstname')
-    password=request.POST.get('password')
-    a.set_password(password)
-    b.username=request.POST.get('username')
-    b.firstname=request.POST.get('firstname')
-    b.email=request.POST.get('email')
-    b.phone=request.POST.get('phone')
-    b.account_type='trainer'
-    c.firstname=request.POST.get('firstname')
-    c.lastname=request.POST.get('lastname')
-    c.gender=request.POST.get('gender')
-    c.email=request.POST.get('email')
-    c.phone=request.POST.get('phone')
-    c.address=request.POST.get('address')
-    c.district=request.POST.get('district')
-    c.username=request.POST.get('username')
-    photo=request.FILES['photo']
-    fs= FileSystemStorage()
-    filename=fs.save(photo.name,photo) 
-    uploaded_file_url=fs.url(filename)
-    c.photo=uploaded_file_url
-    c.age=request.POST.get('age')
-    c.experience=request.POST.get('experience')
-    c.category=request.POST.get('category')
-    a.save()
-    b.save()
-    c.save()
-    return redirect('/update_trainer/')
+# def update_trainer2(request,id):
+#     c=trainer_details.objects.get(id=id)
+#     b=user_account.objects.get(username=c.username)
+#     a=User.objects.get(username=b.username)
+#     a.username=request.POST.get('username')
+#     a.email=request.POST.get('email')
+#     a.first_name=request.POST.get('firstname')
+#     password=request.POST.get('password')
+#     a.set_password(password)
+#     b.username=request.POST.get('username')
+#     b.firstname=request.POST.get('firstname')
+#     b.email=request.POST.get('email')
+#     b.phone=request.POST.get('phone')
+#     b.account_type='trainer'
+#     c.firstname=request.POST.get('firstname')
+#     c.lastname=request.POST.get('lastname')
+#     c.gender=request.POST.get('gender')
+#     c.email=request.POST.get('email')
+#     c.phone=request.POST.get('phone')
+#     c.address=request.POST.get('address')
+#     c.district=request.POST.get('district')
+#     c.username=request.POST.get('username')
+#     photo=request.FILES['photo']
+#     fs= FileSystemStorage()
+#     filename=fs.save(photo.name,photo) 
+#     uploaded_file_url=fs.url(filename)
+#     c.photo=uploaded_file_url
+#     c.age=request.POST.get('age')
+#     c.experience=request.POST.get('experience')
+#     c.category=request.POST.get('category')
+#     a.save()
+#     b.save()
+#     c.save()
+#     return redirect('/update_trainer/')
