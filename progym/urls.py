@@ -43,6 +43,7 @@ urlpatterns = [
     path('update_trainer2/<int:id>',views.update_trainer2),
     path('view_user/',views.view_user),
     path('delete_trainer/',views.delete_trainer),
+     path('delete_trainer1/<int:id>',views.delete_trainer1),
     path('trainer_d/',views.trainer_d),
 ]
 

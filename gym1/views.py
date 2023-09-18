@@ -181,7 +181,15 @@ def view_user(request):
 def delete_trainer(request):
     a=trainer_details.objects.all()
     return render(request,'delete_trainer.html',{'data':a})
+def delete_trainer1(request,id):
+    a=trainer_details.objects.get(id=id)
+    b=User.objects.get(username=a.username)
+    c=user_account.objects.get(username=a.username)
 
+    a.delete()
+    b.delete()
+    c.delete()
+    return redirect('/delete_trainer/')
 def trainer_d(request):
     a=request.session['username']
     # b=trainer_details.objects.get(username=a)
