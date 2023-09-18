@@ -133,35 +133,45 @@ def view_trainer(request):
     a=trainer_details.objects.all()
     return render(request,'view_trainer.html',{'data':a})
 
-def update_trainer(request):
-    a=request.session['username']
-    # b=trainer_details.objects.get(username=a)
-    return render(request,'update_trainer.html',{'data':a})
+def update_trainer(request,id):
+
+    # a=request.session['username']
+    b=trainer_details.objects.get(id=id)
+    return render(request,'update_trainer.html',{'data':b})
 
 
-def update_trainer2(request):
-    b=request.session['username']
-    a=trainer_details.objects.get(username=b)
-    a.firstname=request.POST.get('firstname')
-    a.lastname=request.POST.get('lastname')
-    a.gender=request.POST.get('gender')
-    a.email=request.POST.get('email')
-    a.phone=request.POST.get('phone')
-    a.address=request.POST.get('address')
-    a.district=request.POST.get('district')
-    a.username=request.POST.get('username')
-    photo=request.FILES['photo']
-    fs= FileSystemStorage()
-    filename=fs.save(photo.name,photo) 
-    uploaded_file_url=fs.url(filename)
-    a.photo=uploaded_file_url
-    password=request.POST.get('password')
-    a.set_password(password)
-    a.age=request.POST.get('age')
-    a.experience=request.POST.get('experience')
-    a.category=request.POST.get('category')
-    a.save()
-    return redirect('/update_trainer/')
+def update_trainer2(request,id):
+    # b=request.session['username']
+    a=trainer_details.objects.get(id=id)
+    try:
+        a.firstname=request.POST.get('firstname')
+        a.lastname=request.POST.get('lastname')
+        a.email=request.POST.get('email')
+        a.phone=request.POST.get('phone')
+        a.address=request.POST.get('address')
+        a.district=request.POST.get('district')
+        photo=request.FILES['photo']
+        fs= FileSystemStorage()
+        filename=fs.save(photo.name,photo) 
+        uploaded_file_url=fs.url(filename)
+        a.photo=uploaded_file_url
+    
+        a.age=request.POST.get('age')
+        a.experience=request.POST.get('experience')
+        a.category=request.POST.get('category')
+        a.save()
+    except:
+        a.firstname=request.POST.get('firstname')
+        a.lastname=request.POST.get('lastname')
+        a.email=request.POST.get('email')
+        a.phone=request.POST.get('phone')
+        a.address=request.POST.get('address')
+        a.district=request.POST.get('district')
+        a.age=request.POST.get('age')
+        a.experience=request.POST.get('experience')
+        a.category=request.POST.get('category')
+        a.save()    
+    return redirect('/view_trainer/')
 
 def view_user(request):
     a=request.session['username']
