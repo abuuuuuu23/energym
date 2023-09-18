@@ -38,6 +38,6 @@ class trainer_details(models.Model):
     phone=models.IntegerField()
     address=models.CharField(max_length=30)
     district=models.CharField(max_length=30)
-    photo=models.CharField(max_length=30)
+    photo=models.CharField(max_length=300)
     class meta:
         db_table="trainer_details"

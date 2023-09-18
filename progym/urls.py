@@ -30,7 +30,7 @@ urlpatterns = [
     path('userHome/',views.userHome),
     path('adminHome/',views.adminHome),
 
-    path('trainerForm',views.trainerForm),
+    # path('trainerForm',views.trainerForm),
     path('create_account/',views.create_account),
     path('trainers/',views.trainers),
     path('about/',views.about),
@@ -38,8 +38,12 @@ urlpatterns = [
     path('contact/',views.contact),
     path('create_account2/',views.create_account2),
     path('create_trainer2/',views.create_trainer2),
+    path('view_trainer/',views.view_trainer),
     path('update_trainer/',views.update_trainer),
-    path('update_trainer2/<int:id>',views.update_trainer2),
+    path('update_trainer2/',views.update_trainer2),
+    path('view_user/',views.view_user),
+    path('delete_trainer/',views.delete_trainer),
+    path('trainer_d/',views.trainer_d),
 ]
 
 
