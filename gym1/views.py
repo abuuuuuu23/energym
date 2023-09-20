@@ -1,4 +1,5 @@
 from tkinter import Message
+from django.contrib import auth
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -44,7 +45,8 @@ def userHome(request):
     return render(request,'user.html',{'x':a ,'y':b})
 def trainerHome(request):
     a=request.session['username']
-    return render(request,'trainerHome.html',{'x':a})
+    b=trainer_details.objects.get(username=a)
+    return render(request,'trainerHome.html',{'x':a,'y':b})
     # -----------Login section ended-----------
 def create_account(request):
     return render(request,'create_account.html')
@@ -134,14 +136,11 @@ def view_trainer(request):
     return render(request,'view_trainer.html',{'data':a})
 
 def update_trainer(request,id):
-
-    # a=request.session['username']
     b=trainer_details.objects.get(id=id)
     return render(request,'update_trainer.html',{'data':b})
 
 
 def update_trainer2(request,id):
-    # b=request.session['username']
     a=trainer_details.objects.get(id=id)
     try:
         a.firstname=request.POST.get('firstname')
@@ -190,7 +189,12 @@ def delete_trainer1(request,id):
     b.delete()
     c.delete()
     return redirect('/delete_trainer/')
-def trainer_d(request):
-    a=request.session['username']
-    # b=trainer_details.objects.get(username=a)
-    return render(request,'trainer_d.html',{'data':a})
+
+def trainer_d(request,id):
+    # a=request.session['username']
+    b=trainer_details.objects.get(id=id)
+    return render(request,'trainer_d.html',{'data':b})
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/")
