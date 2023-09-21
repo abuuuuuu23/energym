@@ -187,7 +187,7 @@ def delete_trainer1(request,id):
 
     a.delete()
     b.delete()
-    c.delete()
+    c.delete() 
     return redirect('/delete_trainer/')
 
 def trainer_d(request,id):
