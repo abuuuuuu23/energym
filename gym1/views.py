@@ -198,3 +198,33 @@ def trainer_d(request,id):
 def logout(request):
     auth.logout(request)
     return redirect("/")
+
+def update_user(request):
+    a=request.session['username']
+    b=user_details.objects.get(username=a)
+    return render(request,'update_user.html',{'data':b})
+
+def update_user2(request):
+    a=user_details.objects.get()
+    try:
+        a.firstname=request.POST.get('firstname')
+        a.lastname=request.POST.get('lastname')
+        a.email=request.POST.get('email')
+        a.phone=request.POST.get('phone')
+        a.address=request.POST.get('address')
+        a.district=request.POST.get('district')
+        photo=request.FILES['photo']
+        fs= FileSystemStorage()
+        filename=fs.save(photo.name,photo) 
+        uploaded_file_url=fs.url(filename)
+        a.photo=uploaded_file_url
+        a.save()
+    except:
+        a.firstname=request.POST.get('firstname')
+        a.lastname=request.POST.get('lastname')
+        a.email=request.POST.get('email')
+        a.phone=request.POST.get('phone')
+        a.address=request.POST.get('address')
+        a.district=request.POST.get('district')
+        a.save()    
+    return redirect('/view_user/')

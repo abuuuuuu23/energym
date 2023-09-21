@@ -158,8 +158,8 @@
                             <select name="category"class="form-control" >
                                 <option class="form-control" value="{{ data.catagory }}">Category</option>
                                 <option class="form-control" value="weight loss">Weight Loss</option>
-                                <option class="form-control" value="weight loss">Weight Loss</option>
-                                <option class="form-control" value="weight loss">Weight Loss</option>
+                                <option class="form-control" value="cardio">cardio</option>
+                                <option class="form-control" value="stretching">stretching</option>
                             
                             </select>
                           
@@ -180,7 +180,7 @@
                         </div>
                         <div class="col-6">
                           <div class="form-group">
-                            <textarea name="address" value="" class="form-control" cols="15" rows="4">{{ data.address }}</textarea>
+                            <textarea name="address" value="{{ data.address }}" class="form-control" cols="15" rows="4">{{ data.address }}</textarea>
 
                            </div>
                           </div>
@@ -200,7 +200,7 @@
                        <div class="row">
                         <div class="col-6">
                           <div class="btn-box">
-                            <input type="submit" class="btn-1" value="update trainer">
+                          <button type="button" value="submit" class="btn btn-outline-light">Update Trainer</button></a> 
                         </div>
                        </div>
                        </div>
