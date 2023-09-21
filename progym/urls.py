@@ -48,6 +48,7 @@ urlpatterns = [
     path('logout/',views.logout),
     path('update_user/',views.update_user),
     path('update_user2/',views.update_user2),
+    path('delete_user/',views.delete_trainer),
 ]
 
 

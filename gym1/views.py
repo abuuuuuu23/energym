@@ -205,7 +205,8 @@ def update_user(request):
     return render(request,'update_user.html',{'data':b})
 
 def update_user2(request):
-    a=user_details.objects.get()
+    a=request.session['username']
+    b=user_details.objects.get(username=b)
     try:
         a.firstname=request.POST.get('firstname')
         a.lastname=request.POST.get('lastname')
@@ -228,3 +229,18 @@ def update_user2(request):
         a.district=request.POST.get('district')
         a.save()    
     return redirect('/view_user/')
+
+# def delete_user(request):
+#     a=request.session['username']
+#     b=user_details.objects.get(username=a)
+#     return render(request,'view_user.html',{'data':b})
+def delete_user(request):
+    a=request.session['username']
+    b=user_details.objects.get(usename=a)
+    c=User.objects.get(username=a)
+    d=user_account.objects.get(username=a)
+
+    b.delete()
+    c.delete() 
+    d.delete()
+    return redirect('/''/')
