@@ -120,7 +120,7 @@
                 <div class="row">
                   <div class="col-4">
                     <div class="detail-box">
-                      <form enctype="multipart/form-data" action="/update_user2"  method="post">
+                      <form enctype="multipart/form-data" action="/update_user2/"  method="post">
                         {% csrf_token %}
                        <div class="form-group">
                         <input type="text" value="{{ data.firstname }}" name="firstname" class="form-control" placeholder="enter first name">
@@ -146,10 +146,11 @@
                         <input type="number" value="{{ data.phone }}" name="phone" class="form-control" placeholder="enter Phone number"><br>
                        
                        <div>
-                        <textarea  name="address" value="{{ data.address }}" class="form-control" cols="15" rows="3">address</textarea>
+                        <textarea  name="address" value="{{ data.address }}" class="form-control" cols="15" rows="3">{{ data.address }}</textarea>
                        </div><br>
                        <div class="btn-box">
-                        <button type="button" value="submit" class="btn btn-outline-light">Update User</button></a>
+                        <!-- <button type="button" value="submit" class="btn btn-outline-light">Update User</button></a> -->
+                        <input type="submit" class="btn-1" value="Update Trainer">
                        </div>
                       </form>
                       

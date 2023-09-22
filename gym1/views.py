@@ -187,7 +187,7 @@ def delete_trainer1(request,id):
 
     a.delete()
     b.delete()
-    c.delete() 
+    c.delete()
     return redirect('/delete_trainer/')
 
 def trainer_d(request,id):
@@ -205,8 +205,8 @@ def update_user(request):
     return render(request,'update_user.html',{'data':b})
 
 def update_user2(request):
-    a=request.session['username']
-    b=user_details.objects.get(username=b)
+    b=request.session['username']
+    a=user_details.objects.get(username=b)
     try:
         a.firstname=request.POST.get('firstname')
         a.lastname=request.POST.get('lastname')
@@ -230,17 +230,15 @@ def update_user2(request):
         a.save()    
     return redirect('/view_user/')
 
-# def delete_user(request):
-#     a=request.session['username']
-#     b=user_details.objects.get(username=a)
-#     return render(request,'view_user.html',{'data':b})
 def delete_user(request):
-    a=request.session['username']
-    b=user_details.objects.get(usename=a)
-    c=User.objects.get(username=a)
-    d=user_account.objects.get(username=a)
+    a=user_details.objects.all()
+    return render(request,'view_user.html',{'data':a})
+def delete_user2(request,id):
+    a=user_details.objects.get(id=id)
+    b=User.objects.get(username=a.username)
+    c=user_account.objects.get(username=a.username)
 
+    a.delete()
     b.delete()
-    c.delete() 
-    d.delete()
-    return redirect('/''/')
+    c.delete()
+    return redirect('/login/')
