@@ -112,7 +112,7 @@
                 <div class="row">
                     <div class="col-6">
                         <h3><u>{{ data.username }}</u></h3>
-                        <img style="padding-top: 40px;" src="{{ data.photo }}" height="200px" width="150px">    
+                        <img src="{{ data.photo }}" height="200px" width="150px">    
                     </div>
                   <div class="col-6">
                     <h3 style="padding-left: 40PX;"><u>PROFILE</u></h3>
@@ -123,7 +123,8 @@
                       <ul><li><span>phone:</span>{{ data.phone }}</li></ul>
                       <ul><li><span>address:</span>{{ data.address }}</li></ul>
                       <ul><li><span>district:</span>{{ data.district }}</li></ul>
-
+                      <a href="/update_user/"><button type="button" class="btn btn-outline-light">Update User</button></a>
+                      <a href="/delete_user2/{{x.id}}"><button type="button" class="btn btn-outline-light">Delete User</button></a>
                       </div>
                     </div>
                   </div>
