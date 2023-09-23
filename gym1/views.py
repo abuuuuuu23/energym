@@ -30,7 +30,7 @@ def login1(request):
         if x.account_type=="user":
             return redirect('/userHome')
         elif x.account_type=="trainer":
-            return redirect('/trainerHome')
+            return redirect('/trainerHome/')
         else:
             pass
     else:
@@ -46,6 +46,7 @@ def userHome(request):
 def trainerHome(request):
     a=request.session['username']
     b=trainer_details.objects.get(username=a)
+    print(a,"test1",b)
     return render(request,'trainerHome.html',{'x':a,'y':b})
     # -----------Login section ended-----------
 def create_account(request):
@@ -193,6 +194,7 @@ def delete_trainer1(request,id):
 def trainer_d(request,id):
     # a=request.session['username']
     b=trainer_details.objects.get(id=id)
+    print(b)
     return render(request,'trainer_d.html',{'data':b})
 
 def logout(request):
