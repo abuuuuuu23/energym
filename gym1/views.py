@@ -133,9 +133,11 @@ def create_trainer2(request):
     return redirect('/adminHome/')
 
 def view_trainer(request):
-    a=trainer_details.objects.all()
-    return render(request,'view_trainer.html',{'data':a})
-
+    a=request.session['username']
+    b=user_details.objects.get(username=a)
+    c=trainer_details.objects.all()
+    return render(request,'view_trainer.html',{'data':c,'obj':b,'vy':a})
+    
 def update_trainer(request,id):
     b=trainer_details.objects.get(id=id)
     return render(request,'update_trainer.html',{'data':b})
@@ -244,3 +246,6 @@ def delete_user2(request,id):
     b.delete()
     c.delete()
     return redirect('/login/')
+
+def aboutT(request):
+    return render(request,'aboutT.html',)
