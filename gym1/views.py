@@ -134,6 +134,7 @@ def create_trainer2(request):
 
 def view_trainer(request):
     a=request.session['username']
+    print(a)
     b=user_details.objects.get(username=a)
     c=trainer_details.objects.all()
     return render(request,'view_trainer.html',{'data':c,'obj':b,'vy':a})
@@ -173,7 +174,7 @@ def update_trainer2(request,id):
         a.experience=request.POST.get('experience')
         a.category=request.POST.get('category')
         a.save()    
-    return redirect('/view_trainer/')
+    return redirect('/adminHome/')
 
 def view_user(request):
     a=request.session['username']
@@ -194,7 +195,6 @@ def delete_trainer1(request,id):
     return redirect('/delete_trainer/')
 
 def trainer_d(request,id):
-    # a=request.session['username']
     b=trainer_details.objects.get(id=id)
     print(b)
     return render(request,'trainer_d.html',{'data':b})
@@ -248,4 +248,13 @@ def delete_user2(request,id):
     return redirect('/login/')
 
 def aboutT(request):
-    return render(request,'aboutT.html',)
+    return render(request,'aboutT.html')
+
+def packages(request):
+    return render(request,'packages.html')
+
+def view_packages(request):
+    return render(request,'view_packages.html')
+
+def workout(request):
+    return render(request,'workouts.html')

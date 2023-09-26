@@ -50,7 +50,10 @@ urlpatterns = [
     path('update_user2/',views.update_user2),
     path('delete_user/',views.delete_user),
     path('delete_user2/<int:id>',views.delete_user2),
-    path('aboutT/',views.aboutT) 
+    path('aboutT/',views.aboutT) ,
+    path('packages/',views.packages),
+    path('view_packages/',views.view_packages),
+    path('workout/',views.workout),
 ]
 
 
