@@ -91,10 +91,10 @@
                       <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
                         Trainers
                       </button>
-                      <div class="dropdown-menu">
+                      <div class="dropdown-menu" style="position: static;">
                         <a class="dropdown-item" href="/trainers/">Add Trainer</a>
-                        <a class="dropdown-item" href="/view_trainer/">View Trainer</a>
-                        <a class="dropdown-item" href="/delete_trainer/">Delete Trainer</a>
+                        <!-- <a class="dropdown-item" href="/view_trainer/">View Trainer</a> -->
+                        <a class="dropdown-item" href="/delete_trainer/">View Trainer</a>
                       </div>
                     </div>
                   </li>
@@ -124,8 +124,10 @@
           {% for x in data %}
             <div class="col-3">
                 <h3><u style="padding-left: 20px;">{{ x.username }}</u></h3>
-                <img src="{{ x.photo }}" height="150px" width="150px"><br><br>
-               <a href="/delete_trainer1/{{x.id}}"><button type="button" class="btn btn-outline-light">Delete Trainer</button></a> 
+                <a href="/trainer_d/{{x.id}}"><img src="{{ x.photo }}" height="150px" width="150px"></a>
+                <br><br>
+                <a href="/update_trainer/{{x.id}}"><button type="button" class="btn btn-outline-success">Update Trainer</button></a><br><br>
+               <a href="/delete_trainer1/{{x.id}}"><button type="button" class="btn btn-outline-danger" style="padding-left: 15px;" >Delete Trainer</button></a> 
             </div>
             {% endfor %}
         </div>

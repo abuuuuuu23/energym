@@ -41,3 +41,35 @@ class trainer_details(models.Model):
     photo=models.CharField(max_length=300)
     class meta:
         db_table="trainer_details"
+
+
+class packages(models.Model):
+    trainername=models.CharField(max_length=30)
+    typeofsession=models.CharField(max_length=100)
+    duration=models.CharField(max_length=100)
+    price=models.IntegerField()
+    photo=models.CharField(max_length=30)
+    available_slot=models.CharField(max_length=30)
+    catagory=models.CharField(max_length=30)
+    starting_date=models.DateField(max_length=30)
+    status=models.CharField(max_length=30)
+
+    class meta:
+        db_table="packages"
+
+
+class usergym_data(models.Model):
+    username=models.ForeignKey(user_details,on_delete=models.CASCADE)
+    trainername=models.CharField(max_length=30)
+    packgname=models.CharField(max_length=30)
+    price=models.IntegerField()
+    joining_date=models.DateField(max_length=30)
+    start_date=models.DateField(max_length=30)
+    photo=models.CharField(max_length=30)
+    height=models.IntegerField()
+    weight=models.IntegerField()
+    selfinto=models.CharField(max_length=30)
+    status=models.CharField(max_length=30)
+
+    class meta:
+        db_table="usergym_data"

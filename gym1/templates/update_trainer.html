@@ -91,10 +91,10 @@
                       <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
                         Trainers
                       </button>
-                      <div class="dropdown-menu">
+                      <div class="dropdown-menu" style="position: static;">
                         <a class="dropdown-item" href="/trainers/">Add Trainer</a>
-                        <a class="dropdown-item" href="/view_trainer/">View Trainer</a>
-                        <a class="dropdown-item" href="/delete_trainer/">Delete Trainer</a>
+                        <!-- <a class="dropdown-item" href="/view_trainer/">View Trainer</a> -->
+                        <a class="dropdown-item" href="/delete_trainer/">View Trainer</a>
                       </div>
                     </div>
                   </li>
@@ -126,7 +126,7 @@
                   <div class="col-6">
                     <div class="detail-box">
  
-                      <form enctype="multipart/form-data" action="/update_trainer2/{{data.id}}"  method="post">
+                      <form enctype="multipart/form-data" action="/update_trainer2/{{x.id}}"  method="post">
                         {% csrf_token %}
                        <div class="row">
                         <div class="col-6">
