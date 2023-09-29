@@ -48,9 +48,9 @@ class packages(models.Model):
     typeofsession=models.CharField(max_length=100)
     duration=models.CharField(max_length=100)
     price=models.IntegerField()
-    photo=models.CharField(max_length=30)
+    photo=models.CharField(max_length=500)
     available_slot=models.CharField(max_length=30)
-    catagory=models.CharField(max_length=30)
+    category=models.CharField(max_length=30)
     starting_date=models.DateField(max_length=30)
     status=models.CharField(max_length=30)
 
@@ -58,18 +58,18 @@ class packages(models.Model):
         db_table="packages"
 
 
-class usergym_data(models.Model):
-    username=models.ForeignKey(user_details,on_delete=models.CASCADE)
+class user_gym_data(models.Model):
+    username=models.CharField(max_length=30)
     trainername=models.CharField(max_length=30)
     packgname=models.CharField(max_length=30)
     price=models.IntegerField()
-    joining_date=models.DateField(max_length=30)
-    start_date=models.DateField(max_length=30)
-    photo=models.CharField(max_length=30)
-    height=models.IntegerField()
-    weight=models.IntegerField()
-    selfinto=models.CharField(max_length=30)
+    joining_date=models.CharField(max_length=30)
+    start_date=models.CharField(max_length=30)
+    photo=models.CharField(max_length=500)
+    height=models.CharField(max_length=30)
+    weight=models.CharField(max_length=30)
+    selfintro=models.CharField(max_length=30)
     status=models.CharField(max_length=30)
 
     class meta:
-        db_table="usergym_data"
+        db_table="user_gym_data"
