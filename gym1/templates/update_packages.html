@@ -120,59 +120,60 @@
                 <div class="row">
                   <div class="col-4">
                     <div class="detail-box">
-                      <form enctype="multipart/form-data" action="/packages2/"  method="post">
+                      <form enctype="multipart/form-data" action="/update_packages2/{{data.id}}"  method="post">
                         {% csrf_token %}
                        <div class="form-group">
-                        <input type="text" name="trainername" class="form-control" placeholder="enter trainer name">
+                        <input type="text" value="{{ data.trainername }}" name="trainername" class="form-control" placeholder="enter trainer name">
                        </div>
                        <div class="form-group">
                         <select name="typeofsession" class="form-control" >
-                            <option class="form-control" value="">type of session</option>
-                            <option class="form-control" value="diet">diet</option>
-                            <option class="form-control" value="workout">workout</option>
-                            <option class="form-control" value="diet_workout">diet+workout</option>
+                            <option class="form-control" value="{{ data.typeofsession }}">type of session</option>
+                            <option class="form-control" value="{{ data.diet }}">diet</option>
+                            <option class="form-control" value="{{ data.workout }}">workout</option>
+                            <option class="form-control" value="{{ data.diet_workout }}">diet+workout</option>
                         </select>
                       </div>
 
                       <div class="form-group">
                         <select name="duration" class="form-control" >
-                            <option class="form-control" value="">duration</option>
-                            <option class="form-control" value="1month">1 month</option>
-                            <option class="form-control" value="2month">2 month</option>
-                            <option class="form-control" value="3month">3 month</option>
-                            <option class="form-control" value="6month">6 month</option>
-                            <option class="form-control" value="1year">1 year</option>
+                            <option class="form-control" value="{{ data.duration }}">duration</option>
+                            <option class="form-control" value="{{ data.1months }}">1 months</option>
+                            <option class="form-control" value="{{ data.2months }}">2 months</option>
+                            <option class="form-control" value="{{ data.3months }}">3 months</option>
+                            <option class="form-control" value="{{ data.6months }}">6 months</option>
+                            <option class="form-control" value="{{ data.1year }}">1 year</option>
                         </select>
                       </div>
 
                        <div class="form-group">
-                        <input type="number" name="price" class="form-control" placeholder="enter price">
+                        <input type="number" value="{{ data.price }}" name="price" class="form-control" placeholder="enter price">
                        </div>
                        <div class="form-group">
-                        <input type="file" name="photo"><b style="color: white;">upload photo</b>
+                        <img src="{{ data.photo }}"  height="150" width="150">
+                        <input type="file" value="{{ data.photo }}" name="photo"><b style="color: white;">upload photo</b>
                        </div>
                        <div class="form-group">
-                        <input type="text" name="available_slot" class="form-control" placeholder="available slot">
+                        <input type="text" value="{{ data.available_slot }}" name="available_slot" class="form-control" placeholder="available slot">
                        </div>
                         
                        <div class="form-group">
                         <select name="category"class="form-control" >
-                            <option class="form-control" value="">Category</option>
-                            <option class="form-control" value="individual">individual</option>
-                            <option class="form-control" value="group">group</option>
-                            <option class="form-control" value="ladies">ladies</option>
-                            <option class="form-control" value="mens">men's</option>
-                            <option class="form-control" value="mixed">mixed</option>
+                            <option class="form-control" value="{{ data.category }}">Category</option>
+                            <option class="form-control" value="{{ data.individual }} ">individual</option>
+                            <option class="form-control" value="{{ data.group }}">group</option>
+                            <option class="form-control" value="{{ data.ladies }}">ladies</option>
+                            <option class="form-control" value="{{ data.mens }}">men's</option>
+                            <option class="form-control" value="{{ data.mixed }}">mixed</option>
                         </select>
                       </div>
                        <label><b style="color: white;">starting date</b></label>
-                        <input type="date" name="starting_date" class="form-control" placeholder="enter starting date"><br>
+                        <input type="date" value="{{ data.starting_date }}" name="starting_date" class="form-control" placeholder="enter starting date"><br>
                        
                        <div class="form-group">
-                        <input type="text" name="status" class="form-control" placeholder="enter status">
+                        <input type="text" value="{{ data.status }}" name="status" class="form-control" placeholder="enter status">
                        </div>
                        <div class="btn-box">
-                       <input type="submit" class="btn-1" value="Add Package">
+                       <input type="submit" class="btn-1" value="update packages">
                        </div>
                       </form>
                       

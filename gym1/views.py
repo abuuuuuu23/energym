@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 # import requests
-from gym1.models import user_account,user_details,trainer_details
+from gym1.models import user_account,user_details,trainer_details,packages,user_gym_data
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import authenticate
 # Create your views here.
@@ -250,11 +250,71 @@ def delete_user2(request,id):
 def aboutT(request):
     return render(request,'aboutT.html')
 
-def packages(request):
+def packages1(request):
     return render(request,'packages.html')
 
+def packages2(request):
+    a=packages()
+    a.trainername=request.POST.get('trainername')
+    a.typeofsession=request.POST.get('typeofsession')
+    a.duration=request.POST.get('duration')
+    a.price=request.POST.get('price')
+    photo=request.FILES['photo']
+    fs= FileSystemStorage()
+    filename=fs.save(photo.name,photo) 
+    uploaded_file_url=fs.url(filename)
+    a.photo=uploaded_file_url
+    a.available_slot=request.POST.get('available_slot')
+    a.category=request.POST.get('category')
+    a.starting_date=request.POST.get('starting_date')
+    a.status=request.POST.get('status')
+    a.save()
+    return redirect('/trainerHome/')
+
 def view_packages(request):
-    return render(request,'view_packages.html')
+    b=packages.objects.all()
+    return render(request,'view_packages.html',{'data':b})
+
+def update_packages(request,id):
+    b=packages.objects.get(id=id)
+    return render(request,'update_packages.html',{'data':b})
+
+def update_packages2(request,id):
+    a=packages.objects.get(id=id)
+    a.trainername=request.POST.get('trainername')
+    a.typeofsession=request.POST.get('typeofsession')
+    a.duration=request.POST.get('duration')
+    a.price=request.POST.get('price')
+    photo=request.FILES['photo']
+    fs= FileSystemStorage()
+    filename=fs.save(photo.name,photo) 
+    uploaded_file_url=fs.url(filename)
+    a.photo=uploaded_file_url
+    a.available_slot=request.POST.get('available_slot')
+    a.category=request.POST.get('category')
+    a.starting_date=request.POST.get('starting_date')
+    a.status=request.POST.get('status')
+    a.save()
+    return redirect('/view_packages1/')
+
+def delete_packages(request,):
+    a=packages.objects.all()
+    a.delete()
+    return render(request,'view_packages.html',{'data':a})
+
+# def delete_packages2(request,id):
+#     a=user_details.objects.get(id=id)
+#     b=User.objects.get(username=a.username)
+#     c=user_account.objects.get(username=a.username)
+
+    a.delete()
+    b.delete()
+    c.delete()
+    return redirect('/login/')
+
+def view_packages1(request):
+    b=packages.objects.all()
+    return render(request,'view_packages1.html',{'data':b})
 
 def workout(request):
     return render(request,'workouts.html')

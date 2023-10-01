@@ -93,7 +93,6 @@
                       </button>
                       <div class="dropdown-menu" style="position: static;">
                         <a class="dropdown-item" href="/trainers/">Add Trainer</a>
-                        <!-- <a class="dropdown-item" href="/view_trainer/">View Trainer</a> -->
                         <a class="dropdown-item" href="/delete_trainer/">View Trainer</a>
                       </div>
                     </div>
@@ -126,7 +125,7 @@
                   <div class="col-6">
                     <div class="detail-box">
  
-                      <form enctype="multipart/form-data" action="/update_trainer2/{{x.id}}"  method="post">
+                      <form enctype="multipart/form-data" action="/update_trainer2/{{data.id}}"  method="post">
                         {% csrf_token %}
                        <div class="row">
                         <div class="col-6">
@@ -168,7 +167,7 @@
                         <div class="col-6">
                         <div class="form-group">
                             <select name="category"class="form-control" >
-                                <option class="form-control" value="{{ data.catagory }}">Category</option>
+                                <option class="form-control" value="{{ data.category }}">Category</option>
                                 <option class="form-control" value="weight loss">Weight Loss</option>
                                 <option class="form-control" value="cardio">cardio</option>
                                 <option class="form-control" value="stretching">stretching</option>
