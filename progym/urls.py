@@ -54,12 +54,15 @@ urlpatterns = [
     path('packages1/',views.packages1),
     path('view_packages/',views.view_packages),
     path('view_packages1/',views.view_packages1),
-    path('workout/',views.workout),
+    path('gymdata1/',views.gymdata1),
+    path('gymdata2/',views.gymdata2),
     path('packages2/',views.packages2),
     path('update_packages/<int:id>',views.update_packages),
     path('update_packages2/<int:id>',views.update_packages2),
-    path('delete_packages/',views.delete_packages),
-    # path('delete_packages2/<int:id>',views.delete_packages2),
+    path('delete_packages/<int:id>',views.delete_packages),
+    path('workout/',views.workout),
+
+
 
 ]
 

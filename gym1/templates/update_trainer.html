@@ -166,11 +166,11 @@
                        <div class="row">
                         <div class="col-6">
                         <div class="form-group">
-                            <select name="category"class="form-control" >
-                                <option class="form-control" value="{{ data.category }}">Category</option>
-                                <option class="form-control" value="weight loss">Weight Loss</option>
-                                <option class="form-control" value="cardio">cardio</option>
-                                <option class="form-control" value="stretching">stretching</option>
+                            <select name="category" class="form-control" >
+                                <option name="category" class="form-control" value="{{ data.category }}">Category</option>
+                                <option name="category" class="form-control" value="{{ data.weightloss }}">Weight Loss</option>
+                                <option name="category" class="form-control" value="{{ data.cardio }}">cardio</option>
+                                <option name="category" class="form-control" value="{{ data.stretching }}">stretching</option>
                             
                             </select>
                           
@@ -211,8 +211,7 @@
                        <div class="row">
                         <div class="col-6">
                           <div class="btn-box">
-                          <!-- <button type="button" value="submit" class="btn btn-outline-light">Update Trainer</button></a>  -->
-                          <input type="submit" class="btn-1" value="Update Trainer">
+                          <input type="submit" class="btn btn-outline-light"  value="Update Trainer">
                         </div>
                        </div>
                        </div>

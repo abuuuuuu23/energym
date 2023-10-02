@@ -163,6 +163,7 @@ def update_trainer2(request,id):
         a.experience=request.POST.get('experience')
         a.category=request.POST.get('category')
         a.save()
+        print(a)
     except:
         a.firstname=request.POST.get('firstname')
         a.lastname=request.POST.get('lastname')
@@ -297,24 +298,42 @@ def update_packages2(request,id):
     a.save()
     return redirect('/view_packages1/')
 
-def delete_packages(request,):
-    a=packages.objects.all()
+def delete_packages(request,id):
+    a=packages.objects.get(id=id)
     a.delete()
-    return render(request,'view_packages.html',{'data':a})
-
-# def delete_packages2(request,id):
-#     a=user_details.objects.get(id=id)
-#     b=User.objects.get(username=a.username)
-#     c=user_account.objects.get(username=a.username)
-
-    a.delete()
-    b.delete()
-    c.delete()
-    return redirect('/login/')
+    return redirect('/view_packages1/')
 
 def view_packages1(request):
     b=packages.objects.all()
     return render(request,'view_packages1.html',{'data':b})
 
+def gymdata1(request):
+    # c=trainer_details.objects.get(id=id)
+    # d=packages.objects.get(id=id)
+    return render(request,'usergymdata.html')
+
+def gymdata2(request):
+    a=user_gym_data()
+    a.username=request.POST.get('username')
+    a.trainername=request.POST.get('trainername')
+    a.packgname=request.POST.get('pckgname')
+    a.price=request.POST.get('price')
+    a.joining_date=request.POST.get('joining_date')
+    a.start_date=request.POST.get('start_date')
+    photo=request.FILES['photo']
+    fs= FileSystemStorage()
+    filename=fs.save(photo.name,photo) 
+    uploaded_file_url=fs.url(filename)
+    a.photo=uploaded_file_url
+    a.height=request.POST.get('height')
+    a.weight=request.POST.get('weight')
+    a.selfintro=request.POST.get('selfintro')
+    a.status=request.POST.get('status')
+    a.save()
+    return redirect('/userHome/')
+
 def workout(request):
     return render(request,'workouts.html')
+
+    
+
