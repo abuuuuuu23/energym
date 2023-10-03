@@ -120,43 +120,60 @@
                 <div class="row">
                   <div class="col-4">
                     <div class="detail-box">
-                      <form enctype="multipart/form-data" action="/create_account2/"  method="post">
+                      <form enctype="multipart/form-data" action="/update_packages2/{{data.id}}"  method="post">
                         {% csrf_token %}
                        <div class="form-group">
-                        <input type="text" name="firstname" class="form-control" placeholder="enter first name">
+                        <input type="text" value="{{ data.trainername }}" name="trainername" class="form-control" placeholder="enter trainer name">
                        </div>
                        <div class="form-group">
-                        <input type="text" name="lastname" class="form-control" placeholder="enter last name">
+                        <select name="typeofsession" class="form-control" >
+                            <option class="form-control" value="{{ data.typeofsession }}">type of session</option>
+                            <option class="form-control" value="{{ data.diet }}">diet</option>
+                            <option class="form-control" value="{{ data.workout }}">workout</option>
+                            <option class="form-control" value="{{ data.diet_workout }}">diet+workout</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <select name="duration" class="form-control" >
+                            <option class="form-control" value="{{ data.duration }}">duration</option>
+                            <option class="form-control" value="{{ data.1months }}">1 months</option>
+                            <option class="form-control" value="{{ data.2months }}">2 months</option>
+                            <option class="form-control" value="{{ data.3months }}">3 months</option>
+                            <option class="form-control" value="{{ data.6months }}">6 months</option>
+                            <option class="form-control" value="{{ data.1year }}">1 year</option>
+                        </select>
+                      </div>
+
+                       <div class="form-group">
+                        <input type="number" value="{{ data.price }}" name="price" class="form-control" placeholder="enter price">
                        </div>
                        <div class="form-group">
-                        <input type="text" name="username" class="form-control" placeholder="enter username">
+                        <img src="{{ data.photo }}"  height="150" width="150">
+                        <input type="file" value="{{ data.photo }}" name="photo"><b style="color: white;">upload photo</b>
                        </div>
                        <div class="form-group">
-                        <input type="text" name="email" class="form-control" placeholder="enter email">
+                        <input type="text" value="{{ data.available_slot }}" name="available_slot" class="form-control" placeholder="available slot">
                        </div>
+                        
                        <div class="form-group">
-                        <input type="text" name="district" class="form-control" placeholder="enter district">
-                       </div>
-                    
-                       <div class="form-group">
-                        <input type="file" name="photo"><b style="color: white;">upload photo</b>
-                       </div>
+                        <select name="category"class="form-control" >
+                            <option class="form-control" value="{{ data.category }}">Category</option>
+                            <option class="form-control" value="{{ data.individual }} ">individual</option>
+                            <option class="form-control" value="{{ data.group }}">group</option>
+                            <option class="form-control" value="{{ data.ladies }}">ladies</option>
+                            <option class="form-control" value="{{ data.mens }}">men's</option>
+                            <option class="form-control" value="{{ data.mixed }}">mixed</option>
+                        </select>
+                      </div>
+                       <label><b style="color: white;">starting date</b></label>
+                        <input type="date" value="{{ data.starting_date }}" name="starting_date" class="form-control" placeholder="enter starting date"><br>
                        
-                        <label style="color: rgb(255, 255, 255);">gender</label>
-                        <input type="radio" name="gender" value="male"><b style="color: white;">male</b>
-                        <input type="radio" name="gender" value="female"><b style="color: white;">female</b>
-                       
-                       
-                        <input type="number" name="phone" class="form-control" placeholder="enter Phone number"><br>
-                       
-                       <div>
-                        <textarea name="address" class="form-control" cols="15" rows="3">address</textarea>
-                       </div><br>
                        <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="enter password">
+                        <input type="text" value="{{ data.status }}" name="status" class="form-control" placeholder="enter status">
                        </div>
                        <div class="btn-box">
-                       <input type="submit" class="btn btn-outline-light" value="Create Account">
+                       <input type="submit" class="btn btn-outline-light"  value="update packages">
                        </div>
                       </form>
                       
