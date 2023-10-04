@@ -307,28 +307,31 @@ def view_packages1(request):
     b=packages.objects.all()
     return render(request,'view_packages1.html',{'data':b})
 
-def gymdata1(request):
-    # c=trainer_details.objects.get(id=id)
+def gymdata1(request,id):
+    c=packages.objects.get(id=id)
+    u=request.session['username']
     # d=packages.objects.get(id=id)
-    return render(request,'usergymdata.html')
+    return render(request,'usergymdata.html',{'p':c,'user':u})
 
-def gymdata2(request):
+def gymdata2(request,id):
+    p=packages.objects.get(id=id)
+    u=request.session['username']
     a=user_gym_data()
-    a.username=request.POST.get('username')
-    a.trainername=request.POST.get('trainername')
-    a.packgname=request.POST.get('pckgname')
-    a.price=request.POST.get('price')
+    a.username=u
+    a.trainername=p.trainername
+    a.packgname=p.duration+p.typeofsession
+    a.price=p.price
     a.joining_date=request.POST.get('joining_date')
-    a.start_date=request.POST.get('start_date')
-    photo=request.FILES['photo']
-    fs= FileSystemStorage()
-    filename=fs.save(photo.name,photo) 
-    uploaded_file_url=fs.url(filename)
-    a.photo=uploaded_file_url
-    a.height=request.POST.get('height')
-    a.weight=request.POST.get('weight')
+    a.start_date=p.starting_date
+    # photo=request.FILES['photo']
+    # fs= FileSystemStorage()
+    # filename=fs.save(photo.name,photo) 
+    # uploaded_file_url=fs.url(filename)
+    a.photo=p.photo
+    a.height=request.POST.get('hgt')
+    a.weight=request.POST.get('wgt')
     a.selfintro=request.POST.get('selfintro')
-    a.status=request.POST.get('status')
+    a.status="pending"
     a.save()
     return redirect('/userHome/')
 

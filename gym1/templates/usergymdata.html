@@ -118,49 +118,55 @@
             <div class="carousel-item active">
               <div class="container" style="padding-top: 50px;">
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-6">
                     <div class="detail-box">
-                      <form enctype="multipart/form-data" action="/gymdata2/"  method="post">
+                      <form enctype="multipart/form-data" action="/gymdata2/{{p.id}}"  method="post">
                         {% csrf_token %}
                        <div class="form-group">
-                        <input type="text" name="username" class="form-control" placeholder="enter username">
+                        <input type="text" name="username" class="form-control" value="{{ user }}">
                        </div>
                        <div class="form-group">
-                        <input type="trainername" class="form-control" placeholder="enter trainername">
+                        <input type="trainername" class="form-control" value="{{ p.trainername }}">
                       </div>
 
                       <div class="form-group">
-                        <input type="packgname" class="form-control" placeholder="enter packgname">
+                        <input type="packgname" class="form-control" value="{{ p.duration}} {{ p.typeofsession	}}">
                       </div>
 
                        <div class="form-group">
-                        <input type="number" name="price" class="form-control" placeholder="enter price">
+                        <input type="number" name="price" class="form-control" value="{{ p.price  }}">
                        </div>
                        <div class="form-group">
-                        <input type="file" name="photo"><b style="color: white;">upload photo</b>
+                        <img src="{{ p.photo }}" height="150px" width="150px" alt="img">
+                        <!-- <input  name="photo"><b style="color: white;">upload photo</b> -->
                        </div>
-                       <div class="form-group">
-                        <label><b style="color: white;">joining date</b></label>
-                        <input type="date" name="joining_date" class="form-control">
-                        
-                       <label><b style="color: white;">starting date</b></label>
-                        <input type="date" name="start_date" class="form-control"><br>
-                       </div>
-                       <div class="form-group">
-                        <textarea name="selfintro" class="form-control" cols="15" rows="4">selfintro</textarea>
-                      </div>
-                       <div class="form-group">
-                        <input type="text" name="status" class="form-control" placeholder="enter status">
-                       </div>
-                       <div class="btn-box">
-                       <input type="submit" class="btn btn-outline-light" value="Book Slot">
-                       </div>
-                      </form>
                       
                     </div>
                   </div>
-                  <div class="col-8">
-                    <div class="detail-box" style="margin-top: 150px;">
+                  <div class="col-6">
+                    
+                     <div class="form-group">
+                      <label><b style="color: white;">joining date</b></label>
+                      <input type="date" name="joining_date" class="form-control">
+                      
+                     <label><b style="color: white;">starting date</b></label>
+                      <input type="" name="start_date" class="form-control" value="{{ p.starting_date }}"><br>
+                     </div>
+                     <div class="form-group">
+                      <textarea name="selfintro" class="form-control" cols="15" rows="4">selfintro</textarea>
+                    </div>
+                     <div class="form-group">
+                      <input type="number" name="hgt" class="form-control" placeholder="Height">
+                     </div>
+                     <div class="form-group">
+                      <input type="number" name="wgt" class="form-control" placeholder="Weight">
+                     </div>
+                     <div class="btn-box">
+                     <input type="submit" class="btn btn-outline-light" value="Book Slot">
+                     </div>
+                    </form>
+
+                    <!-- <div class="detail-box" style="margin-top: 150px;">
                         <h2>
                           Get Your Body
                         </h2>
@@ -179,7 +185,7 @@
                             Get A Quote
                           </a>
                         </div>
-                      </div>
+                      </div> -->
                   </div>
                 </div>
               </div>
