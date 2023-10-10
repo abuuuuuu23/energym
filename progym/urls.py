@@ -52,7 +52,7 @@ urlpatterns = [
     path('delete_user2/<int:id>',views.delete_user2),
     path('aboutT/',views.aboutT) ,
     path('packages1/',views.packages1),
-    path('view_packages/',views.view_packages),
+    path('view_packages/<int:id>',views.view_packages),
     path('view_packages1/',views.view_packages1),
     path('gymdata1/<int:id>',views.gymdata1),
     path('gymdata2/<int:id>',views.gymdata2),
@@ -61,6 +61,9 @@ urlpatterns = [
     path('update_packages2/<int:id>',views.update_packages2),
     path('delete_packages/<int:id>',views.delete_packages),
     path('workout/',views.workout),
+    path('pending/',views.pending),
+    path('update_status/<int:id>',views.update_status),
+    path('update_status2/<int:id>',views.update_status2),
 
 
 

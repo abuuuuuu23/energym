@@ -272,8 +272,9 @@ def packages2(request):
     a.save()
     return redirect('/trainerHome/')
 
-def view_packages(request):
-    b=packages.objects.all()
+def view_packages(request,id):
+    a=trainer_details.objects.get(id=id)
+    b=packages.objects.filter(trainername=a.username)
     return render(request,'view_packages.html',{'data':b})
 
 def update_packages(request,id):
@@ -304,13 +305,13 @@ def delete_packages(request,id):
     return redirect('/view_packages1/')
 
 def view_packages1(request):
-    b=packages.objects.all()
+    a=request.session['username']
+    b=packages.objects.filter(trainername=a)
     return render(request,'view_packages1.html',{'data':b})
 
 def gymdata1(request,id):
     c=packages.objects.get(id=id)
     u=request.session['username']
-    # d=packages.objects.get(id=id)
     return render(request,'usergymdata.html',{'p':c,'user':u})
 
 def gymdata2(request,id):
@@ -323,10 +324,6 @@ def gymdata2(request,id):
     a.price=p.price
     a.joining_date=request.POST.get('joining_date')
     a.start_date=p.starting_date
-    # photo=request.FILES['photo']
-    # fs= FileSystemStorage()
-    # filename=fs.save(photo.name,photo) 
-    # uploaded_file_url=fs.url(filename)
     a.photo=p.photo
     a.height=request.POST.get('hgt')
     a.weight=request.POST.get('wgt')
@@ -336,7 +333,33 @@ def gymdata2(request,id):
     return redirect('/userHome/')
 
 def workout(request):
-    return render(request,'workouts.html')
+    a=user_gym_data.objects.get()
+    print(a)
+    return render(request,'workouts.html',{'data':a})
 
-    
+def pending(request):
+    a=user_gym_data.objects.all()
+    return render(request,'view_pending.html',{'data':a})
 
+def update_status(request,id):
+    c=packages.objects.get(id=id)
+    u=request.session['username']
+    return render(request,'updatestatus.html',{'p':c,'user':u})
+
+def update_status2(request,id):
+    p=packages.objects.get(id=id)
+    u=request.session['username']
+    a=user_gym_data()
+    a.username=u
+    a.trainername=p.trainername
+    a.packgname=p.duration+p.typeofsession
+    a.price=p.price
+    a.joining_date=request.POST.get('joining_date')
+    a.start_date=p.starting_date
+    a.photo=p.photo
+    a.height=request.POST.get('hgt')
+    a.weight=request.POST.get('wgt')
+    a.selfintro=request.POST.get('selfintro')
+    a.status="Approved"
+    a.save()
+    return redirect('/pending/')
