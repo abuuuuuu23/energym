@@ -333,18 +333,22 @@ def gymdata2(request,id):
     return redirect('/userHome/')
 
 def workout(request):
-    a=user_gym_data.objects.get()
+    u=request.session['username']
+    a=user_gym_data.objects.filter(username=u)
     print(a)
     return render(request,'workouts.html',{'data':a})
 
 def pending(request):
-    a=user_gym_data.objects.all()
+    a=user_gym_data.objects.filter(status="pending")
     return render(request,'view_pending.html',{'data':a})
 
 def update_status(request,id):
-    c=packages.objects.get(id=id)
-    u=request.session['username']
-    return render(request,'updatestatus.html',{'p':c,'user':u})
+    c=user_gym_data.objects.get(id=id)
+    c.status="Approved"
+    c.save()
+    return redirect('/pending/')
+    # u=request.session['username']
+    # return render(request,'updatestatus.html',{'p':c,'user':u})
 
 def update_status2(request,id):
     p=packages.objects.get(id=id)
