@@ -334,8 +334,8 @@ def gymdata2(request,id):
 
 def workout(request):
     u=request.session['username']
-    a=user_gym_data.objects.filter(username=u)
-    print(a)
+    a=user_gym_data.objects.get(username=u)
+    a.status="pending"
     return render(request,'workouts.html',{'data':a})
 
 def pending(request):
@@ -347,8 +347,6 @@ def update_status(request,id):
     c.status="Approved"
     c.save()
     return redirect('/pending/')
-    # u=request.session['username']
-    # return render(request,'updatestatus.html',{'p':c,'user':u})
 
 def update_status2(request,id):
     p=packages.objects.get(id=id)
@@ -367,3 +365,8 @@ def update_status2(request,id):
     a.status="Approved"
     a.save()
     return redirect('/pending/')
+
+
+def workout2(request):
+    a=user_gym_data.objects.get()
+    return render(request,'approved.html',{'data':a})

@@ -64,7 +64,7 @@ urlpatterns = [
     path('pending/',views.pending),
     path('update_status/<int:id>',views.update_status),
     path('update_status2/<int:id>',views.update_status2),
-
+    path('workout2/',views.workout2),
 
 
 ]

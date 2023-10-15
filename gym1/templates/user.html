@@ -102,7 +102,15 @@
                     <a class="nav-link" href="/view_trainer/">Trainer</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/workout/">Workout</a>
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        workouts
+                      </button>
+                      <div class="dropdown-menu" style="position: static;">
+                        <a class="dropdown-item" href="/workout/">pending workouts</a>
+                        <a class="dropdown-item" href="/workout2/">Approved workouts</a>
+                      </div>
+                    </div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/logout/">Logout</a>
