@@ -127,21 +127,23 @@
                        </div>
                        <div class="form-group">
                         <select name="typeofsession" class="form-control" >
-                            <option class="form-control" value="{{ data.typeofsession }}">type of session</option>
-                            <option class="form-control" value="{{ data.diet }}">diet</option>
-                            <option class="form-control" value="{{ data.workout }}">workout</option>
-                            <option class="form-control" value="{{ data.diet_workout }}">diet+workout</option>
+                            <option class="form-control" value="{{ data.typeofsession }}">{{ data.typeofsession }}</option>
+                            <option class="form-control" value="diet ">diet</option>
+                            <option class="form-control" value="workout ">workout</option>
+                            <option class="form-control" value="diet_workout ">diet+workout</option>
                         </select>
                       </div>
 
                       <div class="form-group">
                         <select name="duration" class="form-control" >
-                            <option class="form-control" value="{{ data.duration }}">duration</option>
-                            <option class="form-control" value="{{ data.1months }}">1 months</option>
-                            <option class="form-control" value="{{ data.2months }}">2 months</option>
-                            <option class="form-control" value="{{ data.3months }}">3 months</option>
-                            <option class="form-control" value="{{ data.6months }}">6 months</option>
-                            <option class="form-control" value="{{ data.1year }}">1 year</option>
+                          <option class="form-control" value="{{ data.duration }}" selected>{{ data.duration }}</option>
+
+                            <option class="form-control" value="duration">duration</option>
+                            <option class="form-control" value="1months ">1 months</option>
+                            <option class="form-control" value="2months ">2 months</option>
+                            <option class="form-control" value="3months">3 months</option>
+                            <option class="form-control" value="6months">6 months</option>
+                            <option class="form-control" value="1year ">1 year</option>
                         </select>
                       </div>
 
@@ -158,20 +160,23 @@
                         
                        <div class="form-group">
                         <select name="category"class="form-control" >
-                            <option class="form-control" value="{{ data.category }}">Category</option>
-                            <option class="form-control" value="{{ data.individual }} ">individual</option>
-                            <option class="form-control" value="{{ data.group }}">group</option>
-                            <option class="form-control" value="{{ data.ladies }}">ladies</option>
-                            <option class="form-control" value="{{ data.mens }}">men's</option>
-                            <option class="form-control" value="{{ data.mixed }}">mixed</option>
+                          <option class="form-control" value="{{ data.category }}" selected>{{ data.category }}</option>
+
+                            <option class="form-control" value="category">Category</option>
+                            <option class="form-control" value="individual">individual</option>
+                            <option class="form-control" value="group ">group</option>
+                            <option class="form-control" value="ladies">ladies</option>
+                            <option class="form-control" value="mens ">men's</option>
+                            <option class="form-control" value="mixed">mixed</option>
                         </select>
                       </div>
                        <label><b style="color: white;">starting date</b></label>
-                        <input type="date" value="{{ data.starting_date }}" name="starting_date" class="form-control" placeholder="enter starting date"><br>
-                       
-                       <div class="form-group">
-                        <input type="text" value="{{ data.status }}" name="status" class="form-control" placeholder="enter status">
-                       </div>
+                       {% if data.starting_date is not None %}
+                        <input  value="{{ data.starting_date }}" name="starting_date" class="form-control" placeholder="enter starting date"><br>
+                       {% else %}
+                       <input  type="date"  name="starting_date" class="form-control" placeholder="enter starting date"><br>
+{% endif %}
+                      
                        <div class="btn-box">
                        <input type="submit" class="btn btn-outline-light"  value="update packages">
                        </div>

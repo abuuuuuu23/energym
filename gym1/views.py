@@ -283,20 +283,30 @@ def update_packages(request,id):
 
 def update_packages2(request,id):
     a=packages.objects.get(id=id)
-    a.trainername=request.POST.get('trainername')
-    a.typeofsession=request.POST.get('typeofsession')
-    a.duration=request.POST.get('duration')
-    a.price=request.POST.get('price')
-    photo=request.FILES['photo']
-    fs= FileSystemStorage()
-    filename=fs.save(photo.name,photo) 
-    uploaded_file_url=fs.url(filename)
-    a.photo=uploaded_file_url
-    a.available_slot=request.POST.get('available_slot')
-    a.category=request.POST.get('category')
-    a.starting_date=request.POST.get('starting_date')
-    a.status=request.POST.get('status')
-    a.save()
+    try:
+        a.trainername=request.POST.get('trainername')
+        a.typeofsession=request.POST.get('typeofsession')
+        a.duration=request.POST.get('duration')
+        a.price=request.POST.get('price')
+        photo=request.FILES['photo']
+        fs= FileSystemStorage()
+        filename=fs.save(photo.name,photo) 
+        uploaded_file_url=fs.url(filename)
+        a.photo=uploaded_file_url
+        a.available_slot=request.POST.get('available_slot')
+        a.category=request.POST.get('category')
+        a.status=request.POST.get('status')
+        a.save()
+    except:
+        a.trainername=request.POST.get('trainername')
+        a.typeofsession=request.POST.get('typeofsession')
+        a.duration=request.POST.get('duration')
+        a.price=request.POST.get('price')
+        
+        a.available_slot=request.POST.get('available_slot')
+        a.category=request.POST.get('category')
+        a.status=request.POST.get('status')
+        a.save() 
     return redirect('/view_packages1/')
 
 def delete_packages(request,id):
@@ -339,7 +349,8 @@ def workout(request):
     return render(request,'workouts.html',{'data':a})
 
 def pending(request):
-    a=user_gym_data.objects.filter(status="pending")
+    t=request.session['username']
+    a=user_gym_data.objects.filter(status="pending",trainername=t)
     return render(request,'view_pending.html',{'data':a})
 
 def update_status(request,id):
