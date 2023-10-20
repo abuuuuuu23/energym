@@ -61,14 +61,11 @@ urlpatterns = [
     path('update_packages2/<int:id>',views.update_packages2),
     path('delete_packages/<int:id>',views.delete_packages),
     path('workout/',views.workout),
+    path('workout2/',views.workout2),
     path('pending/',views.pending),
     path('update_status/<int:id>',views.update_status),
     path('update_status2/<int:id>',views.update_status2),
-    path('workout2/',views.workout2),
-
-
 ]
-
 
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
