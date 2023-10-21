@@ -62,6 +62,7 @@ urlpatterns = [
     path('delete_packages/<int:id>',views.delete_packages),
     path('workout/',views.workout),
     path('workout2/',views.workout2),
+    path('workout3/',views.workout3),
     path('pending/',views.pending),
     path('update_status/<int:id>',views.update_status),
     path('update_status2/<int:id>',views.update_status2),
