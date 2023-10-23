@@ -350,7 +350,13 @@ def workout(request):
 def workout2(request):
     u=request.session['username']
     a=user_gym_data.objects.filter(status="Approved",username=u)
+    return render(request,'workouts.html',{'data':a})
+
+def workout1(request):
+    u=request.session['username']
+    a=user_gym_data.objects.filter(status="Approved",username=u)
     return render(request,'approved.html',{'data':a})
+
 
 def pending(request):
     t=request.session['username']
