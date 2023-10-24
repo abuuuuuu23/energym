@@ -84,7 +84,7 @@
               <div class="d-flex  flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav  ">
                   <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/userHome/">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/about/">About </a>
@@ -93,7 +93,15 @@
                     <a class="nav-link" href="/view_trainer/">Trainer</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/contact/">Contact Us</a>
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        workouts
+                      </button>
+                      <div class="dropdown-menu" style="position: static;">
+                        <a class="dropdown-item" href="/workout/">pending workouts</a>
+                        <a class="dropdown-item" href="/workout2/">Approved workouts</a>
+                      </div>
+                    </div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/logout/">Logout</a>

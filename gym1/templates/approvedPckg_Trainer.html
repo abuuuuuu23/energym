@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>EnergymI</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Dosis:400,600,700|Poppins:400,600,700&display=swap"
+    rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="/trainer_d2/{{y.id}}">
+            <span style="padding-right: 10px;">
+              {{ x }}
+            </span>
+            <img src="{{ y.photo }}" style="height: 90px; width: 100px;"/>
+          </a>
+          <a class="navbar-brand" href="index.html">
+            <img src="{% static 'images/logo.png' %}" alt="" />
+            <span>
+              Energym
+            </span>
+          </a>
+          <div class="contact_nav" id="">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <a class="nav-link" href="service.html">
+                  <img src="{% static 'images/location.png' %}" alt="" />
+                  <span>Location</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="service.html">
+                  <img src="{% static 'images/call.png' %}" alt="" />
+                  <span>Call : + 01 1234567890</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="service.html">
+                  <img src="{% static 'images/envelope.png' %}" alt="" />
+                  <span>demo@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="position-relative">
+      <div class="container">
+        <div class="custom_nav2">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="d-flex  flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav  ">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/trainerHome/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/aboutT/">About </a>
+                  </li>
+                  <li class="nav-item">
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        Packages
+                      </button>
+                      <div class="dropdown-menu" style="position: static;">
+                        <a class="dropdown-item" href="/packages1/">Add packages</a>
+                        <a class="dropdown-item" href="/view_packages1/">View packages</a>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        Workouts
+                        </button>
+                        <div class="dropdown-menu" style="position: static;">
+                          <a class="dropdown-item" href="/pending/">Pending Workouts</a>
+                          <a class="dropdown-item" href="/workout3/">Approved Workouts</a>
+                        </div>
+                    </div>   
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout/">Logout</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                </form>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div><br><br>
+          </ol>
+          <div class="container-fluid">
+            
+              <div class="container">
+                {% for x in data %}
+                <div class="row" style="padding: 100px; background-color: #f8bc1a; height:500px;">
+                  
+                    <div class="col-6">
+                        <h3><u style="padding-left: 20px;">{{ x.trainername }}</u></h3>
+                        <img src="{{ x.photo }}" height="200px" width="150px">    
+                    </div>
+                  <div class="col-6">
+                    <h3 style="padding-left: 40PX;"><u>DATA</u></h3>
+                    <div class="detail-box">
+                      <ul><li><span>trainername:</span>{{ x.trainername }}</li></ul>
+                      <ul><li><span>packgname:</span>{{ x.packgname }}</li></ul>
+                      <ul><li><span>price:</span>{{ x.price }}</li></ul>
+                      <ul><li><span>joining date:</span>{{ x.joining_date }}</li></ul>
+                      <ul><li><span>startingdate:</span>{{ x.start_date }}</li></ul>
+                      <ul><li><span>height:</span>{{ x.height }}</li></ul>
+                      <ul><li><span>Weight:</span>{{ x.weight }}</li></ul>
+                      <ul><li><span>selfintro:</span>{{ x.selfintro }}</li></ul>
+                      <ul><li><span>status:</span>{{ x.status }}</li></ul>
+                      </div>
+                    </div>
+                    
+                  </div><br><br>
+                  {% endfor %}
+                </div>
+                
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+
+  <!-- about section -->
+
+
+
+  <!-- end info section -->
+
+
+  <!-- footer section -->
+  <!-- <section class="container-fluid footer_section ">
+    <p>
+      &copy; 2019 All Rights Reserved. Design by
+      <a href="https://html.design/">Free Html Templates</a>
+    </p>
+  </section> -->
+  <!-- footer section -->
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+
+  <script>
+    function openNav() {
+      document.getElementById("myNav").classList.toggle("menu_width");
+      document
+        .querySelector(".custom_menu-btn")
+        .classList.toggle("menu_btn-style");
+    }
+  </script>
+</body>
+
+</html>

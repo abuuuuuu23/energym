@@ -197,8 +197,15 @@ def delete_trainer1(request,id):
 
 def trainer_d(request,id):
     b=trainer_details.objects.get(id=id)
+    a=request.session['username']
+    c=user_details.objects.get(username=a)
     print(b)
-    return render(request,'trainer_d.html',{'data':b})
+    return render(request,'trainer_d.html',{'data':b,'x':a,'y':c})
+
+def trainer_d2(request,id):
+    b=trainer_details.objects.get(id=id)
+    print(b)
+    return render(request,'trainer_d2.html',{'data':b})
 
 def logout(request):
     auth.logout(request)
@@ -249,10 +256,14 @@ def delete_user2(request,id):
     return redirect('/login/')
 
 def aboutT(request):
-    return render(request,'aboutT.html')
+    a=request.session['username']
+    b=trainer_details.objects.get(username=a)
+    return render(request,'aboutT.html',{'x':a ,'y':b})
 
 def packages1(request):
-    return render(request,'packages.html')
+    a=request.session['username']
+    b=trainer_details.objects.get(username=a)
+    return render(request,'packages.html',{'x':a ,'y':b})
 
 def packages2(request):
     a=packages()
@@ -275,7 +286,9 @@ def packages2(request):
 def view_packages(request,id):
     a=trainer_details.objects.get(id=id)
     b=packages.objects.filter(trainername=a.username)
-    return render(request,'view_packages.html',{'data':b})
+    d=request.session['username']
+    c=user_details.objects.get()
+    return render(request,'view_packages.html',{'data':b,'x':d ,'y':c})
 
 def update_packages(request,id):
     b=packages.objects.get(id=id)
@@ -317,7 +330,8 @@ def delete_packages(request,id):
 def view_packages1(request):
     a=request.session['username']
     b=packages.objects.filter(trainername=a)
-    return render(request,'view_packages1.html',{'data':b})
+    c=trainer_details.objects.get(username=a)
+    return render(request,'view_packages1.html',{'data':b,'x':a,'y':c})
 
 def gymdata1(request,id):
     c=packages.objects.get(id=id)
@@ -345,23 +359,27 @@ def gymdata2(request,id):
 def workout(request):
     u=request.session['username']
     a=user_gym_data.objects.filter(status="pending",username=u)
-    return render(request,'workouts.html',{'data':a})
+    b=user_details.objects.get()
+    return render(request,'workouts.html',{'data':a,'x':u,'y':b})
 
 def workout2(request):
     u=request.session['username']
     a=user_gym_data.objects.filter(status="Approved",username=u)
-    return render(request,'workouts.html',{'data':a})
+    b=user_details.objects.get()
+    return render(request,'workouts.html',{'data':a,'x':u,'y':b})
 
-def workout1(request):
+
+def workout3(request):
     u=request.session['username']
-    a=user_gym_data.objects.filter(status="Approved",username=u)
-    return render(request,'approved.html',{'data':a})
-
+    a=user_gym_data.objects.filter(status="Approved",trainername=u)
+    b=trainer_details.objects.get(username=u)
+    return render(request,'approvedPckg_Trainer.html',{'data':a,'x':u,'y':b})
 
 def pending(request):
     t=request.session['username']
     a=user_gym_data.objects.filter(status="pending",trainername=t)
-    return render(request,'view_pending.html',{'data':a})
+    b=trainer_details.objects.get(username=t)
+    return render(request,'view_pending.html',{'data':a,'x':t,'y':b})
 
 def update_status(request,id):
     c=user_gym_data.objects.get(id=id)
@@ -386,3 +404,18 @@ def update_status2(request,id):
     a.status="Approved"
     a.save()
     return redirect('/pending/')
+
+
+def aboutA(request):
+    return render(request,'aboutA.html')
+
+def serviceA(request):
+    return render(request,'serviceA.html')
+
+def contactA(request):
+    return render(request,'contactA.html')
+
+def aboutU(request):
+    a=request.session['username']
+    b=user_details.objects.get(username=a)
+    return render(request,'aboutU.html',{'x':a ,'y':b})

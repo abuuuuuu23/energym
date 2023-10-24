@@ -45,6 +45,7 @@ urlpatterns = [
     path('delete_trainer/',views.delete_trainer),
     path('delete_trainer1/<int:id>',views.delete_trainer1),
     path('trainer_d/<int:id>',views.trainer_d),
+    path('trainer_d2/<int:id>',views.trainer_d2),
     path('logout/',views.logout),
     path('update_user/',views.update_user),
     path('update_user2/',views.update_user2),
@@ -62,10 +63,14 @@ urlpatterns = [
     path('delete_packages/<int:id>',views.delete_packages),
     path('workout/',views.workout),
     path('workout2/',views.workout2),
-    path('workout1/',views.workout1),
+    path('workout3/',views.workout3),
     path('pending/',views.pending),
     path('update_status/<int:id>',views.update_status),
     path('update_status2/<int:id>',views.update_status2),
+    path('aboutA/',views.aboutA),
+    path('serviceA/',views.serviceA),
+    path('contactA/',views.contactA),
+    path('aboutU/',views.aboutU),
 ]
 
 if settings.DEBUG:

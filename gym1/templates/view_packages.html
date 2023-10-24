@@ -37,12 +37,12 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container">
-          <!-- <a class="navbar-brand" href="/view_user/">
+          <a class="navbar-brand" href="/view_user/">
             <span style="padding-right: 10px;">
-              {{ vy }}
+              {{ x }}
             </span>
-            <img src="{{ obj.photo }}" style="height: 90px; width: 100px;"/>
-          </a> -->
+            <img src="{{ y.photo }}" style="height: 90px; width: 100px;"/>
+          </a>
 
           <a class="navbar-brand" href="index.html">
             <img src="{% static 'images/logo.png' %}" alt="" />
@@ -100,7 +100,15 @@
                     <a class="nav-link" href="/view_trainer/">Trainer</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/workouts/">Workouts</a>
+                    <div class="dropdown">
+                      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                        workouts
+                      </button>
+                      <div class="dropdown-menu" style="position: static;">
+                        <a class="dropdown-item" href="/workout/">pending workouts</a>
+                        <a class="dropdown-item" href="/workout2/">Approved workouts</a>
+                      </div>
+                    </div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/logout/">Logout</a>
