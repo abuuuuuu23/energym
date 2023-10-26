@@ -287,7 +287,7 @@ def view_packages(request,id):
     a=trainer_details.objects.get(id=id)
     b=packages.objects.filter(trainername=a.username)
     d=request.session['username']
-    c=user_details.objects.get()
+    c=user_details.objects.get(username=d)
     return render(request,'view_packages.html',{'data':b,'x':d ,'y':c})
 
 def update_packages(request,id):
@@ -359,13 +359,13 @@ def gymdata2(request,id):
 def workout(request):
     u=request.session['username']
     a=user_gym_data.objects.filter(status="pending",username=u)
-    b=user_details.objects.get()
+    b=user_details.objects.get(username=u)
     return render(request,'workouts.html',{'data':a,'x':u,'y':b})
 
 def workout2(request):
     u=request.session['username']
     a=user_gym_data.objects.filter(status="Approved",username=u)
-    b=user_details.objects.get()
+    b=user_details.objects.get(username=u)
     return render(request,'workouts.html',{'data':a,'x':u,'y':b})
 
 

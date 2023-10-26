@@ -68,7 +68,7 @@ class user_gym_data(models.Model):
     photo=models.CharField(max_length=500)
     height=models.CharField(max_length=30)
     weight=models.CharField(max_length=30)
-    selfintro=models.CharField(max_length=30)
+    selfintro=models.CharField(max_length=500)
     status=models.CharField(max_length=30)
 
     class meta:
